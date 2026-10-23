@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "term-fix"
+version = "0.1.0"
+description = "Terminal error auto-fixer: wrap any command, capture stderr, ask an LLM, run the fix."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "term-fix contributors" }]
+keywords = ["cli", "terminal", "ai", "agent", "debugging", "gemini", "llm"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: System :: Shells",
+]
+dependencies = [
+    "click>=8.1",
+    "rich>=13.7",
+    "httpx>=0.27",
+    "google-genai>=0.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+tf = "term_fix.cli:main"
+term-fix = "term_fix.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/brianbrian666/term-fix"
+Issues = "https://github.com/brianbrian666/term-fix/issues"
+
+[tool.setuptools.packages.find]
+include = ["term_fix*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
